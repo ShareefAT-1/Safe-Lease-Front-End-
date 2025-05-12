@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Importing Link from react-router-dom
-
+import { Link } from "react-router-dom";
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Adjust the URL based on your backend's actual port
     axios
       .get("http://localhost:4000/properties")
       .then((res) => {
         setProducts(res.data);
-        console.log("Fetched products:", res.data); // Log the products array to the console
+        console.log("Fetched products:", res.data); 
       })
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
@@ -26,7 +24,7 @@ const AllProducts = () => {
               <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
                 {product.imageUrl && (
                   <img
-                    src={product.imageUrl} // Display the image URL
+                    src={product.imageUrl} 
                     alt={product.propertyName}
                     className="w-full h-64 object-cover rounded-t-lg"
                   />

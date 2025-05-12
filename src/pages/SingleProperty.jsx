@@ -3,18 +3,17 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const SingleProperty = () => {
-  const { id } = useParams(); // Get the id from the URL params
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    // Fetch the product based on the id from the URL
     axios
       .get(`http://localhost:4000/properties/${id}`)
       .then((res) => {
         setProduct(res.data);
       })
       .catch((err) => console.error("Error fetching product:", err));
-  }, [id]); // Trigger the effect when the id changes
+  }, [id]);
 
   if (!product) {
     return <p>Loading...</p>;

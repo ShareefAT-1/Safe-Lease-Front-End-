@@ -10,7 +10,6 @@ const SearchBox = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Debounce the search input
     const timeoutId = setTimeout(() => {
       if (query.trim() === "") {
         setBooks([]);
@@ -35,7 +34,7 @@ const SearchBox = () => {
           console.error(err);
           setLoading(false);
         });
-    }, 500); // 500ms delay for debouncing
+    }, 500); 
 
     return () => clearTimeout(timeoutId);
   }, [query]);
@@ -59,21 +58,18 @@ const SearchBox = () => {
         />
       </form>
 
-      {/* Loading Spinner */}
       {loading && (
         <div className="absolute z-10 w-full h-64 flex justify-center items-center bg-black opacity-70">
           <div className="animate-spin border-4 border-t-4 border-white border-solid rounded-full w-12 h-12"></div>
         </div>
       )}
 
-      {/* No Results Message */}
       {noResults && !loading && (
         <div className="absolute z-10 w-full h-64 flex justify-center items-center bg-black opacity-70 text-white">
           <p>No results found</p>
         </div>
       )}
 
-      {/* Search Results */}
       <div className="flex flex-wrap absolute z-10 bg-black h-[300px] overflow-auto justify-center">
         {query && !loading && books.length > 0 && books.map((book) => (
           <div

@@ -31,6 +31,30 @@ export default function Navbar() {
             About
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/properties"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-600 font-semibold"
+                : "hover:text-blue-600 transition duration-300"
+            }
+          >
+            Properties
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/create-property"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-600 font-semibold"
+                : "hover:text-blue-600 transition duration-300"
+            }
+          >
+            Create Property
+          </NavLink>
+        </li>
         <SearchBox/>
         <li>
           <NavLink
